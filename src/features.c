@@ -21,3 +21,11 @@ void dimension (const char *source_path){
     read_image_data(source_path, &data, &width, &height, &n);
     printf("L'image mesure %d x %d pixels", width, height);
 }
+
+void second_line(const char *source_path){
+    int width, height,n;
+    unsigned char *data ;
+    read_image_data(source_path, &data, &width, &height, &n);
+    printf("second_line: %d, %d, %d",data[1*width*n],data[1*width*n+1],data[1*width*n+2]);
+
+}
