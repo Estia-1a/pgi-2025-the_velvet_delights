@@ -12,7 +12,7 @@
 int main(int argc, char **argv) {
   /*To use debug mode: 
    - add --debug: freud.exe --debug -f images/input/image.jpeg
-   or 
+   or
    - Simply run your compiled project with start button on the blue menu bar at the bottom of the VS Code window.
    */
 
@@ -34,6 +34,10 @@ int main(int argc, char **argv) {
   /*
    * TO COMPLETE
    */
+  if ( strncmp( configuration.command, "dimension", 9 ) == 0 ) {
+    /* dimension (char *source_path) function is defined in feature.h and implemented in feature.c */
+    dimension (configuration.filenames[0]);
+  }
   
   return 0;
 }

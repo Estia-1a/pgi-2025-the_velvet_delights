@@ -14,3 +14,10 @@
 void helloWorld() {
     printf("Hello World !");
 }
+
+void dimension (const char *source_path){
+    int width, height,n;
+    unsigned char *data ;
+    read_image_data(source_path, &data, &width, &height, &n);
+    printf("L'image mesure %d x %d pixels", width, height);
+}
