@@ -58,9 +58,23 @@ int main(int argc, char **argv) {
     max_pixel (configuration.filenames[0]);
   }
 
-    if ( strncmp( configuration.command, "min_pixel", 9 ) == 0 ) {
+  if ( strncmp( configuration.command, "min_pixel", 9 ) == 0 ) {
     /* dimension (char *source_path) function is defined in feature.h and implemented in feature.c */
     min_pixel (configuration.filenames[0]);
+  }
+
+  if ( strncmp( configuration.command, "max_component", 13 ) == 0 ) {
+    /* dimension (char *source_path) function is defined in feature.h and implemented in feature.c */
+    char *choice;
+    choice=configuration.arguments[0];
+    max_component (configuration.filenames[0],choice);
+  }
+
+  if ( strncmp( configuration.command, "min_component", 13 ) == 0 ) {
+    /* dimension (char *source_path) function is defined in feature.h and implemented in feature.c */
+    char *choice;
+    choice=configuration.arguments[0];
+    min_component (configuration.filenames[0],choice);
   }
   
   return 0;

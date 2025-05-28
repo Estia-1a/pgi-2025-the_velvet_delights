@@ -100,3 +100,77 @@ void min_pixel (const char *source_path){
     printf("min_pixel (%d, %d): %d, %d, %d",xp,yp,R,G,B);
 
 }
+
+void max_component (const char *source_path, char *choice){
+    int width, height,n,x,xp,y,yp,pixel,C;
+    unsigned char *data ;
+    C=0;
+    xp=0;
+    yp=0;
+    read_image_data(source_path, &data, &width, &height, &n);
+    for(y=0;y<(height);y++){
+        for(x=0;x<(width);x++){
+            pixel=((y)*width+(x))*n;
+            if (*choice =='R'){
+                if(data[pixel]>C){
+                    C=data[pixel];
+                    xp=x;
+                    yp=y;
+                }                
+            }
+            if (*choice =='G'){
+                if(data[pixel+1]>C){
+                    C=data[pixel+1];
+                    xp=x;
+                    yp=y;
+                }    
+            }
+            if (*choice =='B'){
+                if(data[pixel+2]>C){
+                    C=data[pixel+2];
+                    xp=x;
+                    yp=y;
+                }  
+            }
+        }
+    }
+    printf("max_component %s (%d, %d): %d",choice,xp,yp,C);
+    
+}
+
+void min_component (const char *source_path, char *choice){
+    int width, height,n,x,xp,y,yp,pixel,C;
+    unsigned char *data ;
+    C=255;
+    xp=0;
+    yp=0;
+    read_image_data(source_path, &data, &width, &height, &n);
+    for(y=0;y<(height);y++){
+        for(x=0;x<(width);x++){
+            pixel=((y)*width+(x))*n;
+            if (*choice =='R'){
+                if(data[pixel]<C){
+                    C=data[pixel];
+                    xp=x;
+                    yp=y;
+                }                
+            }
+            if (*choice =='G'){
+                if(data[pixel+1]<C){
+                    C=data[pixel+1];
+                    xp=x;
+                    yp=y;
+                }    
+            }
+            if (*choice =='B'){
+                if(data[pixel+2]<C){
+                    C=data[pixel+2];
+                    xp=x;
+                    yp=y;
+                }  
+            }
+        }
+    }
+    printf("min_component %s (%d, %d): %d",choice,xp,yp,C);
+    
+}
