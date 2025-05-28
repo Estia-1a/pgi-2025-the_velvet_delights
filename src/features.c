@@ -21,7 +21,7 @@ void dimension (const char *source_path){
     int width, height,n;
     unsigned char *data ;
     read_image_data(source_path, &data, &width, &height, &n);
-    printf("L'image mesure %d x %d pixels", width, height);
+    printf("dimension: %d, %d", width, height);
 }
 
 void second_line(const char *source_path){
@@ -37,7 +37,7 @@ void first_pixel(char *source_path){
     int width, height, n;
 
     /*Lire les données de l’image*/
-    if (read_image_data(source_path, &data, &width, &height, &n) != 0) {
+    if (read_image_data(source_path, &data, &width, &height, &n) == 0) {
         fprintf(stderr, "Erreur : impossible de lire l’image.\n");
         return;
     }
@@ -61,3 +61,19 @@ void first_pixel(char *source_path){
 
 }
 
+void print_pixel(const char *source_path,int x, int y){
+    int width, height,n,pixel;
+    unsigned char *data ;
+    read_image_data(source_path, &data, &width, &height, &n);
+    if(x>=width){
+        printf("Erreur pixel en dehors de l'image");
+    }
+    if(y>=height){
+        printf("Erreur pixel en dehors de l'image");
+    }
+
+    pixel=((y-1)*height+(x-1))*n;
+
+    printf("(%d, %d) %d, %d, %d",x,y,data[pixel],data[pixel+1],data[pixel+2]);
+
+}
