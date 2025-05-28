@@ -41,8 +41,136 @@ void print_pixel(const char *source_path,int x, int y){
         printf("Erreur pixel en dehors de l'image");
     }
 
-    pixel=((y-1)*height+(x-1))*n;
+    pixel=((y)*width+(x))*n;
 
-    printf("(%d, %d) %d, %d, %d",x,y,data[pixel],data[pixel+1],data[pixel+2]);
+    printf("print_pixel (%d, %d) %d, %d, %d",x,y,data[pixel],data[pixel+1],data[pixel+2]);
 
+}
+
+
+void max_pixel (const char *source_path){
+    int width, height,n,x,xp,y,yp,R,G,B,pixel;
+    unsigned char *data ;
+    R=0;
+    G=0;
+    B=0;
+    xp=1;
+    yp=1;
+    read_image_data(source_path, &data, &width, &height, &n);
+
+    for(y=0;y<(height);y++){
+        for(x=0;x<(width);x++){
+            pixel=((y)*width+(x))*n;
+            if (data[pixel]+data[pixel+1]+data[pixel+2]>(R+G+B)){
+                xp=x;
+                yp=y;
+                R=(data[pixel]);
+                G=(data[pixel+1]);
+                B=(data[pixel+2]);
+            }
+        }
+    }
+    printf("max_pixel (%d, %d): %d, %d, %d",xp,yp,R,G,B);
+
+}
+
+
+void min_pixel (const char *source_path){
+    int width, height,n,x,xp,y,yp,R,G,B,pixel;
+    unsigned char *data ;
+    R=255;
+    G=255;
+    B=255;
+    xp=1;
+    yp=1;
+    read_image_data(source_path, &data, &width, &height, &n);
+
+    for(y=0;y<(height);y++){
+        for(x=0;x<(width);x++){
+            pixel=((y)*width+(x))*n;
+            if (data[pixel]+data[pixel+1]+data[pixel+2]<(R+G+B)){
+                xp=x;
+                yp=y;
+                R=(data[pixel]);
+                G=(data[pixel+1]);
+                B=(data[pixel+2]);
+            }
+        }
+    }
+    printf("min_pixel (%d, %d): %d, %d, %d",xp,yp,R,G,B);
+
+}
+
+void max_component (const char *source_path, char *choice){
+    int width, height,n,x,xp,y,yp,pixel,C;
+    unsigned char *data ;
+    C=0;
+    xp=0;
+    yp=0;
+    read_image_data(source_path, &data, &width, &height, &n);
+    for(y=0;y<(height);y++){
+        for(x=0;x<(width);x++){
+            pixel=((y)*width+(x))*n;
+            if (*choice =='R'){
+                if(data[pixel]>C){
+                    C=data[pixel];
+                    xp=x;
+                    yp=y;
+                }                
+            }
+            if (*choice =='G'){
+                if(data[pixel+1]>C){
+                    C=data[pixel+1];
+                    xp=x;
+                    yp=y;
+                }    
+            }
+            if (*choice =='B'){
+                if(data[pixel+2]>C){
+                    C=data[pixel+2];
+                    xp=x;
+                    yp=y;
+                }  
+            }
+        }
+    }
+    printf("max_component %s (%d, %d): %d",choice,xp,yp,C);
+    
+}
+
+void min_component (const char *source_path, char *choice){
+    int width, height,n,x,xp,y,yp,pixel,C;
+    unsigned char *data ;
+    C=255;
+    xp=0;
+    yp=0;
+    read_image_data(source_path, &data, &width, &height, &n);
+    for(y=0;y<(height);y++){
+        for(x=0;x<(width);x++){
+            pixel=((y)*width+(x))*n;
+            if (*choice =='R'){
+                if(data[pixel]<C){
+                    C=data[pixel];
+                    xp=x;
+                    yp=y;
+                }                
+            }
+            if (*choice =='G'){
+                if(data[pixel+1]<C){
+                    C=data[pixel+1];
+                    xp=x;
+                    yp=y;
+                }    
+            }
+            if (*choice =='B'){
+                if(data[pixel+2]<C){
+                    C=data[pixel+2];
+                    xp=x;
+                    yp=y;
+                }  
+            }
+        }
+    }
+    printf("min_component %s (%d, %d): %d",choice,xp,yp,C);
+    
 }
