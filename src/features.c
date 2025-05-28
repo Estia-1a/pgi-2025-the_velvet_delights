@@ -49,7 +49,6 @@ void color_red(const char *source_path){
         
 
 }
-}
 
 void print_pixel(const char *source_path,int x, int y){
     int width, height,n,pixel;
