@@ -29,3 +29,23 @@ void tenth_pixel(const char *source_path){
     printf("tenth_pixel: %d, %d, %d",data[9*n],data[9*n+1],data[9*n+2]);
 
 }
+
+void color_red(const char *source_path){
+    int width, height,n, x, y, pixel   ;
+    unsigned char *data;
+    read_image_data(source_path, &data, &width, &height, &n);
+    for(y=0;y<(height);y++){
+        for(x=0;x<(width);x++){
+            pixel=((y)*width+(x))*n;
+            data[pixel+1]=0;
+            data[pixel+2]=0;
+
+
+        }
+    }
+    write_image_data("image_out.bmp", data, width, height);
+
+            
+        
+
+}

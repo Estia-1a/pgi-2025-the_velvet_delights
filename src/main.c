@@ -39,11 +39,19 @@ int main(int argc, char **argv) {
     dimension (configuration.filenames[0]);
   
   }
+
   if ( strncmp( configuration.command, "tenth_pixel", 11 ) == 0 ) {
     /* ten_pixel (char *source_path) function is defined in feature.h and implemented in feature.c */
     tenth_pixel (configuration.filenames[0]);
   
   }
+
+  if ( strncmp( configuration.command, "color_red", 11 ) == 0 ) {
+    /* color_red(const char *source_path) function is defined in feature.h and implemented in feature.c */
+    color_red(configuration.filenames[0]);
+  
+  }
+  
 
   
   return 0;
