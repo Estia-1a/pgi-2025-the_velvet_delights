@@ -22,12 +22,33 @@ void dimension (const char *source_path){
     printf("dimension: %d, %d", width, height);
 }
 
-void second_line(const char *source_path){
+void tenth_pixel(const char *source_path){
     int width, height,n;
     unsigned char *data ;
     read_image_data(source_path, &data, &width, &height, &n);
-    printf("second_line: %d, %d, %d",data[1*width*n],data[1*width*n+1],data[1*width*n+2]);
+    printf("tenth_pixel: %d, %d, %d",data[9*n],data[9*n+1],data[9*n+2]);
 
+}
+
+void color_red(const char *source_path){
+    int width, height,n, x, y, pixel   ;
+    unsigned char *data;
+    read_image_data(source_path, &data, &width, &height, &n);
+    for(y=0;y<(height);y++){
+        for(x=0;x<(width);x++){
+            pixel=((y)*width+(x))*n;
+            data[pixel+1]=0;
+            data[pixel+2]=0;
+
+
+        }
+    }
+    write_image_data("image_out.bmp", data, width, height);
+
+            
+        
+
+}
 }
 
 void print_pixel(const char *source_path,int x, int y){
