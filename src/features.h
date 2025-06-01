@@ -13,5 +13,6 @@ void max_component (const char *source_path, char *choice);
 void min_component (const char *source_path, char *choice);
 void tenth_pixel (const char *source_path);
 void color_red(const char *source_path);
+void color_green(const char *source_path);
 
 #endif

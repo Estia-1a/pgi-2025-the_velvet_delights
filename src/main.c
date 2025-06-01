@@ -51,6 +51,11 @@ int main(int argc, char **argv) {
     color_red(configuration.filenames[0]);
   
   }
+    if ( strncmp( configuration.command, "color_green", 11 ) == 0 ) {
+    /* color_green(const char *source_path) function is defined in feature.h and implemented in feature.c */
+    color_green(configuration.filenames[0]);
+  
+  }
   if (strncmp(configuration.command, "first_pixel", 11) == 0) {
     /*Ajout de la commande first_pixel*/
     first_pixel(configuration.filenames[0]);
