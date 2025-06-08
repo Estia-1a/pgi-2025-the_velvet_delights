@@ -13,5 +13,6 @@ void min_pixel (const char *source_path);
 void max_component (const char *source_path, char *choice);
 void min_component (const char *source_path, char *choice);
 void color_red(const char *source_path);
+void rotate_cw(char *filename);
 
 #endif

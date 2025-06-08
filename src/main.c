@@ -87,7 +87,10 @@ int main(int argc, char **argv) {
     choice=configuration.arguments[0];
     min_component (configuration.filenames[0],choice);
   }
-  
+  if ( strncmp( configuration.command, "rotate_cw", 10 ) == 0 ) {
+    
+    rotate_cw(configuration.filenames[0]);
+  }
   
 
   

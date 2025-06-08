@@ -226,3 +226,24 @@ void min_component (const char *source_path, char *choice){
     printf("min_component %s (%d, %d): %d",choice,xp,yp,C);
     
 }
+void rotate_cw(char *filename) {
+    unsigned char *data;
+    int width, height, channel_count;
+ 
+    read_image_data(filename, &data, &width, &height, &channel_count);
+ 
+    unsigned char *new_data = (unsigned char *)malloc(width * height * channel_count * sizeof(unsigned char));
+ 
+    for (int y = 0; y < height; ++y) {
+        for (int x = 0; x < width; ++x) {
+            int source = (y * width + x) * channel_count;
+            int emplacement = ((x * height + (height - 1 - y))) * channel_count;
+ 
+            new_data[emplacement] = data[source];
+            new_data[emplacement + 1] = data[source + 1];
+            new_data[emplacement + 2] = data[source + 2];
+        }
+    }
+ 
+    write_image_data("image_out.bmp", new_data, height, width); 
+}
