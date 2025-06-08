@@ -37,11 +37,19 @@ int main(int argc, char **argv) {
   if ( strncmp( configuration.command, "dimension", 9 ) == 0 ) {
     /* dimension (char *source_path) function is defined in feature.h and implemented in feature.c */
     dimension (configuration.filenames[0]);
+  
   }
 
-  if ( strncmp( configuration.command, "second_line", 11 ) == 0 ) {
-    /* second_line(char *source_path); function is defined in feature.h and implemented in feature.c */
-    second_line(configuration.filenames[0]);
+  if ( strncmp( configuration.command, "tenth_pixel", 11 ) == 0 ) {
+    /* ten_pixel (char *source_path) function is defined in feature.h and implemented in feature.c */
+    tenth_pixel (configuration.filenames[0]);
+  
+  }
+
+  if ( strncmp( configuration.command, "color_red", 11 ) == 0 ) {
+    /* color_red(const char *source_path) function is defined in feature.h and implemented in feature.c */
+    color_red(configuration.filenames[0]);
+  
   }
   if (strncmp(configuration.command, "first_pixel", 11) == 0) {
     /*Ajout de la commande first_pixel*/
@@ -55,6 +63,37 @@ int main(int argc, char **argv) {
 
     print_pixel(configuration.filenames[0],x,y);
   }
+
+  if ( strncmp( configuration.command, "max_pixel", 9 ) == 0 ) {
+    /* dimension (char *source_path) function is defined in feature.h and implemented in feature.c */
+    max_pixel (configuration.filenames[0]);
+  }
+
+  if ( strncmp( configuration.command, "min_pixel", 9 ) == 0 ) {
+    /* dimension (char *source_path) function is defined in feature.h and implemented in feature.c */
+    min_pixel (configuration.filenames[0]);
+  }
+
+  if ( strncmp( configuration.command, "max_component", 13 ) == 0 ) {
+    /* dimension (char *source_path) function is defined in feature.h and implemented in feature.c */
+    char *choice;
+    choice=configuration.arguments[0];
+    max_component (configuration.filenames[0],choice);
+  }
+
+  if ( strncmp( configuration.command, "min_component", 13 ) == 0 ) {
+    /* dimension (char *source_path) function is defined in feature.h and implemented in feature.c */
+    char *choice;
+    choice=configuration.arguments[0];
+    min_component (configuration.filenames[0],choice);
+  }
+  
+  
+
   
   return 0;
 }
+
+
+
+  
