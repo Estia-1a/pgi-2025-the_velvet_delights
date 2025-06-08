@@ -96,9 +96,6 @@ int main(int argc, char **argv) {
   if (strncmp(configuration.command, "mirror_horizontal", 17) == 0) {
     mirror_horizontal(configuration.filenames[0]);
   }
-
-  
-
   
   return 0;
 }
