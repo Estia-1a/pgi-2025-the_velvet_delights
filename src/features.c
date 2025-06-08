@@ -1,6 +1,7 @@
 #include <estia-image.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 
 #include "features.h"
@@ -77,3 +78,4 @@ void print_pixel(const char *source_path,int x, int y){
     printf("(%d, %d) %d, %d, %d",x,y,data[pixel],data[pixel+1],data[pixel+2]);
 
 }
+
