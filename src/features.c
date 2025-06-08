@@ -237,7 +237,7 @@ void rotate_cw(char *filename) {
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
             int source = (y * width + x) * channel_count;
-            int emplacement = ((x * height + (height - 1 - y))) * channel_count;
+            int emplacement = ((width-1-x)* height+ y) * channel_count;
  
             new_data[emplacement] = data[source];
             new_data[emplacement + 1] = data[source + 1];
