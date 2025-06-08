@@ -286,6 +286,6 @@ void mirror_horizontal(char *filename) {
             new_data[emplacement + 2] = data[source + 2];
         }
     }
-     
+
     write_image_data("image_out.bmp", new_data, width, height);
 }
