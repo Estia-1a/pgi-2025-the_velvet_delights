@@ -55,10 +55,7 @@ void color_red(const char *source_path){
         }
     }
 
-    write_image_data("image_out.bmp", data, width, height);
-
-            
-        
+    write_image_data("image_out.bmp", data, width, height); 
 
 }
 
@@ -82,6 +79,26 @@ void color_green(const char *source_path){
         
 
 }
+
+
+void color_blue(const char *source_path){
+    int width, height,n, x, y, pixel   ;
+    unsigned char *data;
+    read_image_data(source_path, &data, &width, &height, &n);
+    for(y=0;y<(height);y++){
+        for(x=0;x<(width);x++){
+            pixel=((y)*width+(x))*n;
+            data[pixel+0]=0;
+            data[pixel+1]=0;
+
+
+        }
+    }
+
+    write_image_data("image_out.bmp", data, width, height);            
+}
+
+
 
 void first_pixel(char *source_path){
         unsigned char *data = NULL;
