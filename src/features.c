@@ -74,7 +74,7 @@ void print_pixel(const char *source_path,int x, int y){
 
     pixel=((y)*width+(x))*n;
 
-    printf("print_pixel (%d, %d) %d, %d, %d",x,y,data[pixel],data[pixel+1],data[pixel+2]);
+    printf("print_pixel (%d,%d) : %d,%d,%d",x,y,data[pixel],data[pixel+1],data[pixel+2]);
 
 }
 
@@ -85,8 +85,8 @@ void max_pixel (const char *source_path){
     R=0;
     G=0;
     B=0;
-    xp=1;
-    yp=1;
+    xp=0;
+    yp=0;
     read_image_data(source_path, &data, &width, &height, &n);
 
     for(y=0;y<(height);y++){
@@ -112,8 +112,8 @@ void min_pixel (const char *source_path){
     R=255;
     G=255;
     B=255;
-    xp=1;
-    yp=1;
+    xp=0;
+    yp=0;
     read_image_data(source_path, &data, &width, &height, &n);
 
     for(y=0;y<(height);y++){
