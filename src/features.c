@@ -33,6 +33,14 @@ void tenth_pixel(const char *source_path){
 
 }
 
+void second_line(const char *source_path){
+    int width, height,n;
+    unsigned char *data ;
+    read_image_data(source_path, &data, &width, &height, &n);
+    printf("second_line: %d, %d, %d",data[1*width*n],data[1*width*n+1],data[1*width*n+2]);
+
+}
+
 void color_red(const char *source_path){
     int width, height,n, x, y, pixel   ;
     unsigned char *data;
