@@ -96,6 +96,13 @@ int main(int argc, char **argv) {
   if (strncmp(configuration.command, "mirror_horizontal", 17) == 0) {
     mirror_horizontal(configuration.filenames[0]);
   }
+
+
+  if ( strncmp( configuration.command, "color_desaturate", 16 ) == 0 ) {
+    /* ten_pixel (char *source_path) function is defined in feature.h and implemented in feature.c */
+    color_desaturate (configuration.filenames[0]);
+  
+  }
   
   return 0;
 }

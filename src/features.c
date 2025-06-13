@@ -297,3 +297,72 @@ void mirror_horizontal(char *filename) {
 
     write_image_data("image_out.bmp", new_data, width, height);
 }
+
+
+
+
+
+
+
+
+
+void color_desaturate(const char *source_path){
+    int width, height,n, x, y, pixel,val,R,G,B,min,max ;
+    unsigned char *data;
+    read_image_data(source_path, &data, &width, &height, &n);
+    for(y=0;y<(height);y++){
+        for(x=0;x<(width);x++){
+            pixel=((y)*width+(x))*n;
+            R=data[pixel];
+            G=data[pixel+1];
+            B=data[pixel+2];
+
+
+            if(R<G){
+		        if(R<B){
+			        min=R;
+		        }
+		        else {
+			        min=B;
+		        }
+	        }else {
+		        if(G<B){
+			        min=G;
+		        }
+		        else {
+			        min=B;
+		        }
+	        }
+
+
+            if(R>G){
+		        if(R>B){
+			        max=R;
+		        }
+		        else {
+			        max=B;
+		        }
+	        }else {
+		        if(G>B){
+			        max=G;
+		        }
+		        else {
+			        max=B;
+		        }
+	        }
+
+            val=(min+max)/2;
+
+            data[pixel]=val;
+            data[pixel+1]=val;
+            data[pixel+2]=val;
+
+
+        }
+    }
+    write_image_data("image_out.bmp", data, width, height);
+
+            
+        
+
+}

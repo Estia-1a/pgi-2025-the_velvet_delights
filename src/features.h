@@ -16,4 +16,8 @@ void color_red(const char *source_path);
 void rotate_cw(char *filename);
 void rotate_acw(char *filename);
 void mirror_horizontal(char *filename);
+
+
+void color_desaturate (const char *filenames);
+
 #endif
