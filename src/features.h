@@ -19,5 +19,6 @@ void mirror_horizontal(char *filename);
 
 
 void color_desaturate (const char *filenames);
+void scale_crop (const char *filenames, int x, int y, int width, int height);
 
 #endif

@@ -108,6 +108,17 @@ int main(int argc, char **argv) {
   if (strncmp(configuration.command, "second_line", 11) == 0) {
     second_line(configuration.filenames[0]);
   }
+
+  if (strncmp(configuration.command, "scale_crop", 10) == 0) {
+    int x,y,width,height;
+
+    x=atoi(configuration.arguments[0]);
+    y=atoi(configuration.arguments[1]);
+    width=atoi(configuration.arguments[2]);
+    height=atoi(configuration.arguments[3]);
+
+    scale_crop(configuration.filenames[0],x,y,width,height);
+  }
   
   return 0;
 }

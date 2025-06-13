@@ -361,9 +361,56 @@ void color_desaturate(const char *source_path){
 
         }
     }
-    write_image_data("image_out.bmp", data, width, height);
+    write_image_data("image_out.bmp", data, width, height);    
 
+}
+
+
+
+
+void scale_crop (const char *filenames, int x, int y, int new_width, int new_height){
+    int width, height,n,xmax,xmin,xp,ymax,ymin,yp,pixel,new_pixel,crop_width,crop_height;
+    unsigned char *data ;
+    read_image_data(filenames, &data, &width, &height, &n);
+    xmin=x-(new_width/2);
+    xmax=x+(new_width/2);
+    ymin=y-(new_height/2);
+    ymax=y+(new_height/2);
+
+    if (xmin<0){
+        xmin=0;
+    }
+    if (xmax>width){
+        xmax=width;
+    }
+    if (ymin<0){
+        ymin=0;
+    }
+    if (ymax>height){
+        ymax=height;
+    }
+
+    crop_width=xmax-xmin;
+    crop_height=ymax-ymin;
+
+    unsigned char *new_data = (unsigned char *)malloc(crop_width * crop_height * n);
+
+
+    for (yp=ymin; yp< ymax; yp++){
+        for (xp=xmin; xp< xmax; xp++){
+            pixel=((yp)*width+(xp))*n;
+            new_pixel=((yp-ymin)*crop_width+(xp-xmin))*n;
+
+            new_data[new_pixel]=data[pixel];
+            new_data[new_pixel+1]=data[pixel+1];
+            new_data[new_pixel+2]=data[pixel+2];
             
+        }
         
+    }
+    
 
+    write_image_data("image_out.bmp", new_data, crop_width, crop_height); 
+
+    free(new_data);
 }
