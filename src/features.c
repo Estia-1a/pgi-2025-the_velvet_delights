@@ -1,6 +1,7 @@
 #include <estia-image.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 
 
 #include "features.h"
@@ -24,11 +25,39 @@ void dimension (const char *source_path){
     printf("dimension: %d, %d", width, height);
 }
 
+void tenth_pixel(const char *source_path){
+    int width, height,n;
+    unsigned char *data ;
+    read_image_data(source_path, &data, &width, &height, &n);
+    printf("tenth_pixel: %d, %d, %d",data[9*n],data[9*n+1],data[9*n+2]);
+
+}
+
 void second_line(const char *source_path){
     int width, height,n;
     unsigned char *data ;
     read_image_data(source_path, &data, &width, &height, &n);
     printf("second_line: %d, %d, %d",data[1*width*n],data[1*width*n+1],data[1*width*n+2]);
+
+}
+
+void color_red(const char *source_path){
+    int width, height,n, x, y, pixel   ;
+    unsigned char *data;
+    read_image_data(source_path, &data, &width, &height, &n);
+    for(y=0;y<(height);y++){
+        for(x=0;x<(width);x++){
+            pixel=((y)*width+(x))*n;
+            data[pixel+1]=0;
+            data[pixel+2]=0;
+
+
+        }
+    }
+    write_image_data("image_out.bmp", data, width, height);
+
+            
+        
 
 }
 
@@ -204,4 +233,67 @@ void min_component (const char *source_path, char *choice){
     }
     printf("min_component %s (%d, %d): %d",choice,xp,yp,C);
     
+}
+void rotate_cw(char *filename) {
+    unsigned char *data;
+    int width, height, channel_count;
+ 
+    read_image_data(filename, &data, &width, &height, &channel_count);
+ 
+    unsigned char *new_data = (unsigned char *)malloc(width * height * channel_count * sizeof(unsigned char));
+ 
+    for (int y = 0; y < height; ++y) {
+        for (int x = 0; x < width; ++x) {
+            int source = (y * width + x) * channel_count;
+            int emplacement = ((x * height + (height - 1 - y))) * channel_count;
+ 
+            new_data[emplacement] = data[source];
+            new_data[emplacement + 1] = data[source + 1];
+            new_data[emplacement + 2] = data[source + 2];
+        }
+    }
+ 
+    write_image_data("image_out.bmp", new_data, height, width); 
+}
+void rotate_acw(char *filename) {
+    unsigned char *data;
+    int width, height, channel_count;
+ 
+    read_image_data(filename, &data, &width, &height, &channel_count);
+ 
+    unsigned char *new_data = (unsigned char *)malloc(width * height * channel_count * sizeof(unsigned char));
+ 
+    for (int y = 0; y < height; ++y) {
+        for (int x = 0; x < width; ++x) {
+            int source = (y * width + x) * channel_count;
+            int emplacement = ((width - 1 - x) * height + y) * channel_count;
+ 
+            new_data[emplacement] = data[source];
+            new_data[emplacement + 1] = data[source + 1];
+            new_data[emplacement + 2] = data[source + 2];
+        }
+    }
+ 
+    write_image_data("image_out.bmp", new_data, height, width); 
+}
+void mirror_horizontal(char *filename) {
+    unsigned char *data;
+    int width, height, channel_count;
+ 
+    read_image_data(filename, &data, &width, &height, &channel_count);
+ 
+    unsigned char *new_data = (unsigned char *)malloc(width * height * channel_count * sizeof(unsigned char));
+ 
+    for (int y = 0; y < height; ++y) {
+        for (int x = 0; x < width; ++x) {
+            int source = (y * width + x) * channel_count;
+            int emplacement = (y * width + (width - 1 - x)) * channel_count;
+ 
+            new_data[emplacement] = data[source];
+            new_data[emplacement + 1] = data[source + 1];
+            new_data[emplacement + 2] = data[source + 2];
+        }
+    }
+
+    write_image_data("image_out.bmp", new_data, width, height);
 }
