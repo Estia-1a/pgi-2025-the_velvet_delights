@@ -61,11 +61,18 @@ int main(int argc, char **argv) {
   
   }
 
-  if ( strncmp( configuration.command, "couleur_gris", 10 ) == 0 ) {
+  if ( strncmp( configuration.command, "couleur_gris", 12 ) == 0 ) {
     /* couleur_gris(const char *source_path) function is defined in feature.h and implemented in feature.c */
     couleur_gris(configuration.filenames[0]);
   
   }
+
+  if ( strncmp( configuration.command, "couleur_gris_luminance", 22 ) == 0 ) {
+    /* couleur_gris_luminance(const char *source_path) function is defined in feature.h and implemented in feature.c */
+    couleur_gris_luminance(configuration.filenames[0]);
+  
+  }
+
 
   if (strncmp(configuration.command, "first_pixel", 11) == 0) {
     /*Ajout de la commande first_pixel*/

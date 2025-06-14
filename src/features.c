@@ -118,6 +118,24 @@ void couleur_gris(const char *source_path){
     write_image_data("image_out.bmp", data, width, height);            
 }
 
+void couleur_gris_luminance(const char *source_path){
+    int width, height,n, x, y, pixel   ;
+    unsigned char *data;
+    read_image_data(source_path, &data, &width, &height, &n);
+    for(y=0;y<(height);y++){
+        for(x=0;x<(width);x++){
+            pixel=((y)*width+(x))*n;
+            unsigned char r = data[pixel + 0];
+            unsigned char v = data[pixel + 1];
+            unsigned char b = data[pixel + 2];
+            unsigned char gris_luminance = (unsigned char)(0.21 * r + 0.72 * v + 0.07 * b);
+             data[pixel + 0] = gris_luminance;
+            data[pixel + 1] = gris_luminance;
+            data[pixel + 2] = gris_luminance;
+            }
+    }
+    write_image_data("image_out.bmp", data, width, height);            
+}
 
 
 
