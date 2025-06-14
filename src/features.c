@@ -99,6 +99,26 @@ void color_blue(const char *source_path){
     write_image_data("image_out.bmp", data, width, height);            
 }
 
+void couleur_gris(const char *source_path){
+    int width, height,n, x, y, pixel   ;
+    unsigned char *data;
+    read_image_data(source_path, &data, &width, &height, &n);
+    for(y=0;y<(height);y++){
+        for(x=0;x<(width);x++){
+            pixel=((y)*width+(x))*n;
+            unsigned char r = data[pixel + 0];
+            unsigned char v = data[pixel + 1];
+            unsigned char b = data[pixel + 2];
+            unsigned char moyenne = (r + v + b) / 3;
+            data[pixel + 0] = moyenne;
+            data[pixel + 1] = moyenne;
+            data[pixel + 2] = moyenne;
+        }
+    }
+    write_image_data("image_out.bmp", data, width, height);            
+}
+
+
 
 
 void first_pixel(char *source_path){
@@ -453,3 +473,4 @@ void scale_crop (const char *filenames, int x, int y, int new_width, int new_hei
 
     free(new_data);
 }
+
