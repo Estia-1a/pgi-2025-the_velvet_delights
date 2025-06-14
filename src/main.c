@@ -96,14 +96,26 @@ int main(int argc, char **argv) {
     choice=configuration.arguments[0];
     min_component (configuration.filenames[0],choice);
   }
-  if (strncmp(configuration.command, "rotate_cw", 10) == 0) {
+  if (strncmp(configuration.command, "rotate_cw", 9) == 0) {
     rotate_cw(configuration.filenames[0]);
   }
-  if (strncmp(configuration.command, "rotate_acw", 11) == 0) {
+  if (strncmp(configuration.command, "rotate_acw", 10) == 0) {
     rotate_acw(configuration.filenames[0]);
   }
   if (strncmp(configuration.command, "mirror_horizontal", 17) == 0) {
     mirror_horizontal(configuration.filenames[0]);
+  }
+
+
+  if ( strncmp( configuration.command, "color_desaturate", 16 ) == 0 ) {
+    /* ten_pixel (char *source_path) function is defined in feature.h and implemented in feature.c */
+    color_desaturate (configuration.filenames[0]);
+  
+  }
+
+
+  if (strncmp(configuration.command, "second_line", 11) == 0) {
+    second_line(configuration.filenames[0]);
   }
   
   return 0;
