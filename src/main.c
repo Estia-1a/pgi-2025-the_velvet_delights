@@ -73,6 +73,12 @@ int main(int argc, char **argv) {
   
   }
 
+  if ( strncmp( configuration.command, "inversion_couleur", 17 ) == 0 ) {
+    /* inversion_couleur(const char *source_path) function is defined in feature.h and implemented in feature.c */
+    inversion_couleur(configuration.filenames[0]);
+  
+  }
+
 
   if (strncmp(configuration.command, "first_pixel", 11) == 0) {
     /*Ajout de la commande first_pixel*/
