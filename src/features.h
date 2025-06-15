@@ -25,6 +25,8 @@ void scale_crop (const char *filenames, int x, int y, int width, int height);
 
 void couleur_gris(const char *source_path);
 void couleur_gris_luminance(const char *source_path);
+void inversion_couleur(const char *source_path);
+
 
 
 
