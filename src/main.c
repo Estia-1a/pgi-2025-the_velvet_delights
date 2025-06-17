@@ -61,21 +61,21 @@ int main(int argc, char **argv) {
   
   }
 
-  if ( strncmp( configuration.command, "couleur_gris", 12 ) == 0 ) {
-    /* couleur_gris(const char *source_path) function is defined in feature.h and implemented in feature.c */
-    couleur_gris(configuration.filenames[0]);
+  if ( strncmp( configuration.command, "color_gray", 10 ) == 0 ) {
+    /* color_gray(const char *source_path) function is defined in feature.h and implemented in feature.c */
+    color_gray(configuration.filenames[0]);
   
   }
 
-  if ( strncmp( configuration.command, "couleur_gris_luminance", 22 ) == 0 ) {
-    /* couleur_gris_luminance(const char *source_path) function is defined in feature.h and implemented in feature.c */
-    couleur_gris_luminance(configuration.filenames[0]);
+  if ( strncmp( configuration.command, "color_gray_luminance", 20 ) == 0 ) {
+    /* color_gray_luminance(const char *source_path) function is defined in feature.h and implemented in feature.c */
+    color_gray_luminance(configuration.filenames[0]);
   
   }
 
-  if ( strncmp( configuration.command, "inversion_couleur", 17 ) == 0 ) {
-    /* inversion_couleur(const char *source_path) function is defined in feature.h and implemented in feature.c */
-    inversion_couleur(configuration.filenames[0]);
+  if ( strncmp( configuration.command, "color_invert", 12 ) == 0 ) {
+    /* color_invert(const char *source_path) function is defined in feature.h and implemented in feature.c */
+    color_invert(configuration.filenames[0]);
   
   }
 
