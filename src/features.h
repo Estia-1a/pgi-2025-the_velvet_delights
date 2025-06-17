@@ -18,4 +18,5 @@ void color_green(const char *source_path);
 void rotate_cw(char *filename);
 void rotate_acw(char *filename);
 void mirror_horizontal(char *filename);
+void mirror_vertical(char *filename);
 #endif
