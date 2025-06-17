@@ -99,7 +99,7 @@ void color_blue(const char *source_path){
     write_image_data("image_out.bmp", data, width, height);            
 }
 
-void couleur_gris(const char *source_path){
+void color_gray(const char *source_path){
     int width, height,n, x, y, pixel   ;
     unsigned char *data;
     read_image_data(source_path, &data, &width, &height, &n);
@@ -118,7 +118,7 @@ void couleur_gris(const char *source_path){
     write_image_data("image_out.bmp", data, width, height);            
 }
 
-void couleur_gris_luminance(const char *source_path){
+void color_gray_luminance(const char *source_path){
     int width, height,n, x, y, pixel   ;
     unsigned char *data;
     read_image_data(source_path, &data, &width, &height, &n);
@@ -137,7 +137,7 @@ void couleur_gris_luminance(const char *source_path){
     write_image_data("image_out.bmp", data, width, height);            
 }
 
-void inversion_couleur(const char *source_path){
+void color_invert(const char *source_path){
     int width, height,n, x, y, pixel   ;
     unsigned char *data;
     read_image_data(source_path, &data, &width, &height, &n);
