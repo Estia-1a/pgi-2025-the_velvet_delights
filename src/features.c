@@ -339,4 +339,28 @@ void mirror_vertical(char *filename) {
 
     write_image_data("image_out.bmp", new_data, width, height);
 }
+void mirror_total(char *filename) {
+    unsigned char *data;
+    int width, height, channel_count;
+
+    read_image_data(filename, &data, &width, &height, &channel_count);
+
+    unsigned char *new_data = (unsigned char *)malloc(width * height * channel_count * sizeof(unsigned char));
+
+    for (int y = 0; y < height; ++y) {
+        for (int x = 0; x < width; ++x) {
+            int source = (y * width + x) * channel_count;
+            int target = ((height - 1 - y) * width + (width - 1 - x)) * channel_count;
+
+            new_data[target] = data[source];
+            new_data[target + 1] = data[source + 1];
+            new_data[target + 2] = data[source + 2];
+        }
+    }
+
+    write_image_data("image_out.bmp", new_data, width, height);
+    free(data);
+    free(new_data);
+}
+
 
