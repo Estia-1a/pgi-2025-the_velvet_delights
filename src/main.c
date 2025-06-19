@@ -156,9 +156,18 @@ int main(int argc, char **argv) {
 
     scale_crop(configuration.filenames[0],x,y,width,height);
   }
-  
+
+  if (strncmp(configuration.command, "scale_nearest", 13) == 0){
+    float scale = atof(configuration.arguments[0]);
+    scale_nearest(configuration.filenames[0],scale);
+
+  }
+
+
   return 0;
+
 }
+
 
 
 

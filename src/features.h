@@ -25,7 +25,7 @@ void mirror_total(char *filename);
 
 void color_desaturate (const char *filenames);
 void scale_crop (const char *filenames, int x, int y, int width, int height);
-
+void scale_nearest (const char *filenames,float scale);
 void color_gray(const char *source_path);
 void color_gray_luminance(const char *source_path);
 void color_invert(const char *source_path);
