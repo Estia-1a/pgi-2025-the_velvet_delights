@@ -163,6 +163,12 @@ int main(int argc, char **argv) {
 
   }
 
+  if (strncmp(configuration.command, "scale_bilinear", 14) == 0) {
+    float scale = atof(configuration.arguments[0]);
+    scale_bilinear(configuration.filenames[0], scale);
+
+  }
+
 
   return 0;
 
